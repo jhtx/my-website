@@ -314,32 +314,87 @@ section { padding: 6rem 6%; }
 .step h3 { font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: .5rem; }
 .step p { font-size: .85rem; line-height: 1.6; color: var(--text-mid); }
 
-/* ─── CTA ─── */
-.cta-section {
+/* ─── CONTACT SECTION ─── */
+.contact-section {
   background: linear-gradient(135deg, var(--navy), #14365E);
-  text-align: center; padding: 5rem 6%;
+  padding: 5rem 6%;
   position: relative; overflow: hidden;
 }
-.cta-section::before {
+.contact-section::before {
   content: '';
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
+  position: absolute; top: -20%; right: -10%;
   width: 600px; height: 600px;
   background: radial-gradient(circle, rgba(46,196,182,.08) 0%, transparent 60%);
   border-radius: 50%;
 }
-.cta-section h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
-  font-weight: 600; color: var(--white);
-  margin-bottom: 1rem; position: relative;
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
 }
-.cta-section p {
-  color: rgba(255,255,255,.6); max-width: 480px;
-  margin: 0 auto 2rem; line-height: 1.7;
-  font-size: .95rem; position: relative;
+.contact-details { display: flex; flex-direction: column; gap: 1.25rem; }
+.contact-detail {
+  display: flex; align-items: flex-start; gap: .85rem;
 }
-.cta-section .btn-primary { position: relative; }
+.contact-detail-icon { font-size: 1.2rem; margin-top: .1rem; }
+.contact-detail-label {
+  font-size: .7rem; font-weight: 600; letter-spacing: .1em;
+  text-transform: uppercase; color: rgba(255,255,255,.4);
+  margin-bottom: .15rem;
+}
+.contact-detail-value {
+  font-size: .9rem; color: var(--white); font-weight: 500;
+  text-decoration: none;
+}
+a.contact-detail-value:hover { color: var(--teal); }
+
+.contact-form-wrap {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 2.25rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,.15);
+}
+.contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
+.form-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+}
+.form-group { display: flex; flex-direction: column; gap: .35rem; }
+.form-group label {
+  font-size: .75rem; font-weight: 600; color: var(--navy);
+  letter-spacing: .02em;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: .7rem .85rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .88rem;
+  color: var(--text-dark);
+  background: var(--cream);
+  transition: border-color .2s, box-shadow .2s;
+  outline: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(46,196,182,.1);
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--slate);
+}
+.form-group select { cursor: pointer; }
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-note {
+  font-size: .72rem; color: var(--slate);
+  text-align: center; margin-top: .25rem;
+}
 
 /* ─── FOOTER ─── */
 footer {
@@ -357,6 +412,13 @@ footer a { color: var(--teal); text-decoration: none; font-size: .78rem; }
   .hero { padding: 7rem 5% 3rem; }
   section { padding: 4rem 5%; }
   .stats-bar { margin: -2rem 5% 0; }
+  .contact-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
@@ -484,6 +546,12 @@ footer a { color: var(--teal); text-decoration: none; font-size: .78rem; }
 
   <div class="services-grid">
     <div class="service-card">
+      <div class="service-icon">🛠️</div>
+      <h3>Custom Project</h3>
+      <p>Have a specific accounting or finance challenge? We build custom solutions — reconciliation templates, financial models, reporting packages, data transformations, and more. If it touches your numbers, we can help.</p>
+      <div class="service-price">Book a call to discuss your project</div>
+    </div>
+    <div class="service-card">
       <div class="service-icon">📋</div>
       <h3>Financial Data Cleanup</h3>
       <p>Messy books? We restructure your chart of accounts, reconcile discrepancies, fix misclassifications, and deliver analysis-ready financials — so your data actually tells the right story.</p>
@@ -518,12 +586,6 @@ footer a { color: var(--teal); text-decoration: none; font-size: .78rem; }
       <h3>Expense Reporting System</h3>
       <p>A mobile-friendly app for receipt capture and expense submission, with automated approval routing and month-end reconciliation — no more chasing receipts.</p>
       <div class="service-price">Book a call to discuss scope</div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🛠️</div>
-      <h3>Custom Project</h3>
-      <p>Have a specific accounting or finance challenge? We build custom solutions — reconciliation templates, financial models, reporting packages, data transformations, and more. If it touches your numbers, we can help.</p>
-      <div class="service-price">Book a call to discuss your project</div>
     </div>
   </div>
 </section>
@@ -585,20 +647,90 @@ footer a { color: var(--teal); text-decoration: none; font-size: .78rem; }
   </div>
 </section>
 
-<!-- ══════════ CTA ══════════ -->
-<section id="contact" class="cta-section">
-  <h2>Ready to stop losing time to spreadsheets?</h2>
-  <p>Book a free 30-minute operations audit. We'll show you exactly where your back office is leaking hours and money — and how to fix it.</p>
-  <a href="mailto:jimmy@smbsolved.com" class="btn-primary">
-    <span>Book Your Free Audit</span>
-    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-  </a>
+<!-- ══════════ CONTACT ══════════ -->
+<section id="contact" class="contact-section">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-label" style="color: var(--gold);">Get in Touch</div>
+      <h2 class="section-title" style="color: var(--white);">Let's talk about your back office.</h2>
+      <p style="color: rgba(255,255,255,.6); line-height: 1.7; font-size: .95rem; margin-bottom: 2rem;">Book a free 30-minute accounting &amp; operations audit. We'll identify where you're losing time and money — and show you exactly how to fix it.</p>
+      
+      <div class="contact-details">
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📧</div>
+          <div>
+            <div class="contact-detail-label">Email</div>
+            <a href="mailto:jimmy@smbsolved.com" class="contact-detail-value">jimmy@smbsolved.com</a>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
+          <div>
+            <div class="contact-detail-label">Based in</div>
+            <div class="contact-detail-value">Sugar Land, TX</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🕐</div>
+          <div>
+            <div class="contact-detail-label">Response Time</div>
+            <div class="contact-detail-value">Within 24 hours</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap">
+      <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success.html">
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hidden-field" style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" placeholder="Your company">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@company.com" required>
+        </div>
+        <div class="form-group">
+          <label for="interest">What are you interested in?</label>
+          <select id="interest" name="interest">
+            <option value="" disabled selected>Select a service area</option>
+            <option value="operations-audit">Free Operations Audit</option>
+            <option value="fractional-controller">Fractional Controller</option>
+            <option value="financial-health-check">Monthly Financial Health Check</option>
+            <option value="dashboard-build">Executive Dashboard Build</option>
+            <option value="close-automation">Month-End Close Automation</option>
+            <option value="ap-ar-automation">AP / AR Workflow Automation</option>
+            <option value="data-cleanup">Financial Data Cleanup</option>
+            <option value="cash-flow-forecast">Cash Flow Forecasting</option>
+            <option value="expense-reporting">Expense Reporting System</option>
+            <option value="getting-started">Getting Started Services</option>
+            <option value="templates-tools">Templates & Custom Tools</option>
+            <option value="custom-project">Custom Project</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Tell us about your situation</label>
+          <textarea id="message" name="message" rows="4" placeholder="What's your biggest pain point right now? What tools are you currently using?"></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+          <span>Send Message</span>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </button>
+        <p class="form-note">We'll respond within 24 hours. No spam, ever.</p>
+      </form>
+    </div>
+  </div>
 </section>
 
 <footer>
   <p>&copy; 2026 SMB Solved. Sugar Land, TX.</p>
   <a href="mailto:jimmy@smbsolved.com">jimmy@smbsolved.com</a>
 </footer>
-
-</body>
-</html>
