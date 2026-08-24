@@ -1,8 +1,8 @@
 {
   "template": "fixed-asset-register",
   "excel": "16.0.20326",
-  "on": "2026-08-23",
+  "on": "2026-08-24",
   "checksCompared": 41,
-  "fileSha256": "2aed540a104a120c",
+  "fileSha256": "2d9e7fe26cdcebaa",
   "conventions": "book: straight-line, full-month; tax: MACRS GDS half-year, bonus in year 1; report year 2026 sample data"
 }
