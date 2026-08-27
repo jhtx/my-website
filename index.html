@@ -7,9 +7,12 @@
 <meta name="description" content="SMB Solved is a consulting firm in Sugar Land, TX. Outsourced controller-level accounting operations, monthly reviews, and custom automations and internal tools, built on the Microsoft stack you own or as purpose-built software.">
 <link rel="canonical" href="https://smbsolved.com/">
 
+<!-- SMB Solved icon set -->
 <link rel="icon" href="/favicon.ico" sizes="32x32">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="/svg/favicon-64.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/png/app-icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#10192B">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://smbsolved.com/">
@@ -27,191 +30,226 @@
 <meta name="twitter:description" content="Outsourced controller-level accounting operations, monthly reviews, and custom automations built on the tools you own or from scratch.">
 <meta name="twitter:image" content="https://smbsolved.com/og-image.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;family=Archivo:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/InstrumentSans-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin>
 
 <style>
-  /* ---------- tokens ---------- */
-  :root {
-    --paper:      #FBFAF7;
-    --ink:        #16130E;
-    --body:       #3B362C;
-    --muted:      #4A4438;
-    --eyebrow:    #6B6252;
-    --rule:       #E5E1D8;
-    --accent:     #A0411F;
-    --dark:       #16130E;
-    --dark-text:  #E8E2D6;
-    --dark-accent:#D4794F;
-    --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-    --sans:  Archivo, Helvetica, Arial, sans-serif;
-  }
+/* ============================ fonts ============================ */
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("/fonts/InstrumentSans-Variable.woff2") format("woff2-variations");
+  font-weight: 400 700; font-stretch: 75% 100%; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("/fonts/InstrumentSerif-Regular.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/JetBrainsMono-Variable.woff2") format("woff2-variations");
+  font-weight: 100 800; font-style: normal; font-display: swap;
+}
 
-  /* To move the palette onto the navy in your logo, replace the two accent
-     values above with:  --accent: #16385E;  --dark-accent: #7FA8CF;
-     Nothing else needs to change. */
+/* ============================ tokens ============================ */
+:root {
+  --ink:        #10192B;   /* brand ink */
+  --sienna:     #B0603A;   /* brand sienna: mark, rules, non-text accents */
+  --sienna-txt: #8F4B2C;   /* darkened sienna for text links and button fill */
+  --paper:      #F6F3ED;   /* page background */
+  --white:      #FFFFFF;   /* panels and working surfaces */
 
-  *, *::before, *::after { box-sizing: border-box; }
+  --body:       #2C3746;
+  --muted:      #4E5A6B;
+  --label:      #5E6979;
+  --rule:       #E3DED4;
+  --rule-white: #E8E5DE;
 
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after { animation: none !important; transition: none !important; }
-  }
+  --ink-text:   #B8C0CC;   /* body copy on ink */
+  --ink-rule:   #253145;
 
-  body {
-    margin: 0;
-    overflow-x: hidden;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: var(--sans);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+  --steda-ink:  #101B24;
+  --steda-mint: #7FD4C4;
+  --steda-text: #C3D0D2;
+  --steda-rule: #23323C;
 
-  /* ---------- links ---------- */
-  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
-  a:hover { color: var(--ink); }
-  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+  --sans:  "Instrument Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --mono:  "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
 
-  .skip {
-    position: absolute; left: -9999px; top: 0;
-    background: var(--ink); color: var(--paper);
-    padding: 10px 16px; font-size: 14px; text-decoration: none; z-index: 20;
-  }
-  .skip:focus { left: 8px; top: 8px; color: var(--paper); }
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+body {
+  margin: 0; overflow-x: hidden;
+  background: var(--paper); color: var(--ink);
+  font-family: var(--sans); font-size: 17px; line-height: 1.7;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
 
-  /* ---------- layout ---------- */
-  .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
-  .band { padding: 56px 0 60px; }
-  .band--first { padding-top: 76px; }
-  .band--ruled { padding-top: 0; }
-  .band--ruled > .wrap > .band-body { border-top: 1px solid var(--rule); padding-top: 56px; }
-  .inner { max-width: 42rem; }
+a { color: var(--sienna-txt); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--ink); }
+a:focus-visible { outline: 2px solid var(--sienna-txt); outline-offset: 3px; border-radius: 2px; }
 
-  /* ---------- header ---------- */
-  .site-head {
-    position: sticky; top: 0; z-index: 5;
-    background: var(--paper);
-    border-bottom: 1px solid var(--rule);
-  }
-  /* keep anchored sections clear of the pinned header */
-  section[id] { scroll-margin-top: 78px; }
-  .nav {
-    max-width: 960px; margin: 0 auto; padding: 20px 24px;
-    display: flex; align-items: baseline; justify-content: space-between;
-    gap: 12px 24px; flex-wrap: wrap;
-  }
-  .wordmark {
-    font-family: var(--serif); font-size: 19px; font-weight: 600;
-    letter-spacing: -0.01em; color: var(--ink); text-decoration: none;
-  }
-  .wordmark:hover { color: var(--accent); }
-  .nav-links { display: flex; gap: 22px; font-size: 14.5px; }
-  .nav-links a { color: var(--muted); text-decoration: none; }
-  .nav-links a:hover { color: var(--ink); text-decoration: underline; }
+.skip {
+  position: absolute; left: -9999px; top: 0; z-index: 20;
+  background: var(--ink); color: var(--paper);
+  padding: 10px 16px; font-size: 14px; text-decoration: none;
+}
+.skip:focus { left: 8px; top: 8px; color: var(--paper); }
 
-  /* ---------- type ---------- */
-  .eyebrow {
-    font-family: var(--sans); font-size: 12.5px; font-weight: 500;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--eyebrow); margin: 0 0 32px;
-  }
-  h1 {
-    font-family: var(--serif); font-weight: 400;
-    font-size: clamp(32px, 5.4vw, 48px); line-height: 1.17;
-    letter-spacing: -0.015em; margin: 0 0 24px; text-wrap: pretty; max-width: 44rem;
-  }
-  .lede {
-    font-size: 17.5px; line-height: 1.65; color: var(--muted);
-    margin: 0 0 20px; max-width: 34rem; text-wrap: pretty;
-  }
-  .qualifier {
-    font-size: 15.5px; line-height: 1.6; color: var(--eyebrow);
-    margin: 0 0 36px; max-width: 34rem; text-wrap: pretty;
-  }
-  .item-title {
-    font-family: var(--serif); font-weight: 600; font-size: 25px;
-    line-height: 1.25; margin: 0 0 14px;
-  }
-  .copy { font-size: 17px; line-height: 1.7; color: var(--body); margin: 0; text-wrap: pretty; }
-  .copy + .copy { margin-top: 18px; }
-  .copy strong { font-weight: 500; color: var(--ink); }
+/* ============================ layout ============================ */
+.wrap { max-width: 1000px; margin: 0 auto; padding: 0 28px; }
+.band { padding: 72px 0 76px; }
+.band--first { padding: 84px 0 78px; }
+.inner { max-width: 44rem; }
+.surface { background: var(--white); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+section[id] { scroll-margin-top: 84px; }
 
-  /* ---------- services ---------- */
-  .item-list > div { padding: 0 0 40px; max-width: 42rem; }
-  .item-list > div + div { padding-top: 40px; border-top: 1px solid var(--rule); }
-  .item-list > div:last-child { padding-bottom: 0; }
+/* ============================ header ============================ */
+.site-head {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(246, 243, 237, 0.92);
+  backdrop-filter: saturate(140%) blur(8px);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav {
+  max-width: 1000px; margin: 0 auto; padding: 16px 28px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px 24px;
+}
+.nav-logo { display: inline-flex; align-items: center; }
+.nav-logo img { display: block; height: 30px; width: auto; }
+.nav-links { display: flex; align-items: center; gap: 26px; }
+.nav-links a {
+  font-size: 14.5px; font-weight: 500; color: var(--muted); text-decoration: none;
+  letter-spacing: -0.005em;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  font-size: 14px; font-weight: 600; color: var(--ink) !important;
+  border: 1px solid var(--ink); border-radius: 3px; padding: 8px 15px;
+}
+.nav-cta:hover { background: var(--ink); color: var(--paper) !important; }
 
-  /* ---------- how we work ---------- */
-  .points { display: grid; gap: 28px; max-width: 40rem; }
+/* ============================ type ============================ */
+.eyebrow {
+  font-family: var(--mono); font-size: 11.5px; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--label); margin: 0 0 34px;
+  display: flex; align-items: center; gap: 12px;
+}
+.eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+.surface .eyebrow::after { background: var(--rule-white); }
 
-  /* ---------- cta ---------- */
-  .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 26px; }
-  .btn {
-    background: var(--accent); color: var(--paper);
-    font-size: 15.5px; font-weight: 500; padding: 13px 22px;
-    border-radius: 2px; text-decoration: none; display: inline-block;
-  }
-  .btn:hover { background: var(--ink); color: var(--paper); }
-  .btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-  .cta-alt { font-size: 15.5px; color: var(--muted); }
+h1 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(38px, 6vw, 60px); line-height: 1.08;
+  letter-spacing: -0.015em; margin: 0 0 26px; text-wrap: pretty; max-width: 20ch;
+}
+.lede {
+  font-size: 18.5px; line-height: 1.62; color: var(--muted);
+  margin: 0 0 38px; max-width: 36rem; text-wrap: pretty;
+}
+.item-title {
+  font-family: var(--sans); font-weight: 600; font-size: 22px;
+  letter-spacing: -0.02em; line-height: 1.3; margin: 0 0 12px; color: var(--ink);
+}
+.copy { font-size: 17px; line-height: 1.72; color: var(--body); margin: 0; text-wrap: pretty; }
+.copy + .copy { margin-top: 18px; }
+.copy strong { font-weight: 600; color: var(--ink); }
 
-  /* ---------- steda band ---------- */
-  .steda {
-    background: var(--dark); color: var(--dark-text);
-    border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
-  }
-  .steda .eyebrow { color: #9A907C; }
-  .steda .product {
-    font-family: var(--serif); font-weight: 400;
-    font-size: clamp(26px, 3.6vw, 34px); line-height: 1.25;
-    margin: 0 0 18px; color: #FBFAF7;
-  }
-  .steda .copy { color: var(--dark-text); }
-  .steda a { color: var(--dark-accent); }
-  .steda a:hover { color: #FBFAF7; }
-  .steda a:focus-visible { outline-color: var(--dark-accent); }
+/* ============================ services ============================ */
+.item-list { display: grid; gap: 0; }
+.item-row { display: grid; grid-template-columns: 64px 1fr; gap: 0 24px; padding: 34px 0; }
+.item-row + .item-row { border-top: 1px solid var(--rule-white); }
+.item-row:first-child { padding-top: 6px; }
+.item-row:last-child { padding-bottom: 6px; }
+.item-num {
+  font-family: var(--mono); font-size: 12.5px; font-weight: 500;
+  color: var(--sienna); letter-spacing: 0.04em; padding-top: 6px;
+}
+.item-body { max-width: 40rem; }
 
-  /* ---------- about ---------- */
-  .about {
-    font-family: var(--serif); font-size: 20px; line-height: 1.62;
-    color: var(--ink); margin: 0; text-wrap: pretty; max-width: 38rem;
-  }
+/* ============================ how we work ============================ */
+.points { display: grid; gap: 30px; max-width: 41rem; }
+.point { padding-left: 18px; border-left: 2px solid var(--sienna); }
 
-  /* ---------- contact ---------- */
-  .contact-line {
-    font-family: var(--serif); font-weight: 400;
-    font-size: clamp(24px, 3.4vw, 30px); line-height: 1.3;
-    margin: 0 0 26px; text-wrap: pretty; max-width: 38rem;
-  }
-  .contact-email { font-size: 17.5px; line-height: 1.7; margin: 0 0 30px; }
+/* ============================ cta ============================ */
+.cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
+.btn {
+  background: var(--sienna-txt); color: var(--paper);
+  font-size: 15.5px; font-weight: 600; letter-spacing: -0.01em;
+  padding: 14px 24px; border-radius: 3px; text-decoration: none; display: inline-block;
+  transition: background 0.15s ease;
+}
+.btn:hover { background: var(--ink); color: var(--paper); }
+.btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.cta-alt { font-size: 15.5px; color: var(--muted); }
 
-  /* ---------- footer ---------- */
-  .site-foot { border-top: 1px solid var(--rule); }
-  .foot-inner {
-    max-width: 960px; margin: 0 auto; padding: 28px 24px 40px;
-    display: flex; flex-wrap: wrap; justify-content: space-between;
-    gap: 14px 32px; font-size: 13.5px; line-height: 1.7; color: #5E5645;
-  }
-  .foot-inner a { color: #5E5645; }
-  .foot-inner a:hover { color: var(--ink); }
-  .foot-links { display: flex; flex-wrap: wrap; gap: 6px 22px; }
+/* ============================ steda band ============================ */
+.steda { background: var(--steda-ink); color: var(--steda-text); }
+.steda .eyebrow { color: #7E8E93; }
+.steda .eyebrow::after { background: var(--steda-rule); }
+.steda .copy { color: var(--steda-text); }
+.steda a { color: var(--steda-mint); }
+.steda a:hover { color: #FFFFFF; }
+.steda a:focus-visible { outline-color: var(--steda-mint); }
+.steda-logo { display: block; height: 42px; width: auto; margin: 0 0 26px; }
 
-  /* ---------- mobile ---------- */
-  @media (max-width: 480px) {
-    .nav { padding: 14px 20px; gap: 10px 16px; }
-    section[id] { scroll-margin-top: 66px; }
-    .wordmark { font-size: 17.5px; }
-    .nav-links { gap: 18px; font-size: 14px; }
-    .wrap { padding: 0 20px; }
-    .band { padding: 44px 0 48px; }
-    .band--first { padding-top: 52px; }
-    .band--ruled > .wrap > .band-body { padding-top: 44px; }
-    .item-title { font-size: 22px; }
-    .about { font-size: 18.5px; }
-  }
+/* ============================ about ============================ */
+.about { font-size: 18px; line-height: 1.72; color: var(--body); margin: 0; max-width: 40rem; text-wrap: pretty; }
+
+/* ============================ contact ============================ */
+.contact-line {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(30px, 4.4vw, 42px); line-height: 1.14;
+  letter-spacing: -0.015em; margin: 0 0 30px; text-wrap: pretty; max-width: 22ch;
+}
+.contact-email { font-size: 18px; margin: 0 0 32px; }
+
+/* ============================ footer ============================ */
+.site-foot { background: var(--ink); color: var(--ink-text); }
+.foot-top {
+  max-width: 1000px; margin: 0 auto; padding: 46px 28px 30px;
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 26px 40px;
+}
+.foot-top img { display: block; height: 30px; width: auto; }
+.foot-nav { display: flex; flex-wrap: wrap; gap: 8px 26px; font-size: 14.5px; }
+.foot-nav a { color: var(--ink-text); text-decoration: none; }
+.foot-nav a:hover { color: #FFFFFF; text-decoration: underline; }
+.foot-bar {
+  border-top: 1px solid var(--ink-rule);
+}
+.foot-bar-inner {
+  max-width: 1000px; margin: 0 auto; padding: 20px 28px 40px;
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 32px;
+  font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em;
+  text-transform: uppercase; color: #7C8698;
+}
+
+/* ============================ mobile ============================ */
+@media (max-width: 620px) {
+  .nav { padding: 13px 20px; }
+  .nav-logo img { height: 26px; }
+  .nav-links { gap: 18px; }
+  .nav-links a { font-size: 14px; }
+  .nav-cta { display: none; }
+  section[id] { scroll-margin-top: 62px; }
+  .wrap { padding: 0 20px; }
+  .band { padding: 52px 0 56px; }
+  .band--first { padding: 56px 0 54px; }
+  h1 { font-size: clamp(31px, 8.4vw, 40px); }
+  .lede { font-size: 17px; }
+  .item-row { grid-template-columns: 1fr; gap: 8px; padding: 28px 0; }
+  .item-num { padding-top: 0; }
+  .foot-top { padding: 38px 20px 26px; }
+  .foot-bar-inner { padding: 18px 20px 34px; }
+}
 </style>
 </head>
 <body>
@@ -220,11 +258,14 @@
 
 <header class="site-head">
   <nav class="nav">
-    <a href="#top" class="wordmark">SMB Solved</a>
+    <a href="#top" class="nav-logo" aria-label="SMB Solved, home">
+      <img src="/svg/logo-horizontal-outlined.svg" alt="SMB Solved" width="300" height="60">
+    </a>
     <div class="nav-links">
       <a href="#services">Services</a>
       <a href="#steda">Steda</a>
       <a href="#contact">Contact</a>
+      <a href="https://outlook.office.com/bookwithme/user/a78568f6e272443a9e54d1a701434774@smbsolved.com/meetingtype/V-ihch_zw06fsbATYEBCpw2?anonymous&amp;ismsaljsauthenabled&amp;ep=mlink" class="nav-cta" target="_blank" rel="noopener">Book a call</a>
     </div>
   </nav>
 </header>
@@ -234,70 +275,80 @@
   <!-- HERO -->
   <section id="top" class="band band--first">
     <div class="wrap">
-      <div>
-        <h1>SMB Solved runs the accounting operations and builds the internal tools for small and mid-sized businesses.</h1>
-        <p class="lede">Controller-level support, monthly reviews of the books, and software built either on the tools you already pay for or from scratch. Run by an accountant who builds the software too.</p>
-        <p class="qualifier">Most clients run between $2M and $50M in revenue, with a bookkeeper in place and no controller.</p>
-        <div class="cta-row">
-          <a href="https://outlook.office.com/bookwithme/user/a78568f6e272443a9e54d1a701434774@smbsolved.com/meetingtype/V-ihch_zw06fsbATYEBCpw2?anonymous&amp;ismsaljsauthenabled&amp;ep=mlink" class="btn" target="_blank" rel="noopener">Book a call</a>
-          <span class="cta-alt">or email <a href="mailto:hello@smbsolved.com">hello@smbsolved.com</a></span>
-        </div>
+      <h1>Accounting operations and internal tools, run like a partner.</h1>
+      <p class="lede">Controller-level support, monthly reviews of the books, and software built either on the tools you already pay for or from scratch. Run by an accountant who builds the software too.</p>
+      <div class="cta-row">
+        <a href="https://outlook.office.com/bookwithme/user/a78568f6e272443a9e54d1a701434774@smbsolved.com/meetingtype/V-ihch_zw06fsbATYEBCpw2?anonymous&amp;ismsaljsauthenabled&amp;ep=mlink" class="btn" target="_blank" rel="noopener">Book a call</a>
+        <span class="cta-alt">or email <a href="mailto:hello@smbsolved.com">hello@smbsolved.com</a></span>
       </div>
     </div>
   </section>
 
   <!-- SERVICES -->
-  <section id="services" class="band band--ruled">
+  <section id="services" class="band surface">
     <div class="wrap">
-      <div class="band-body">
-        <h2 class="eyebrow">Services</h2>
-        <div class="item-list">
-          <div>
+      <h2 class="eyebrow">Services</h2>
+      <div class="item-list">
+
+        <div class="item-row">
+          <div class="item-num">01</div>
+          <div class="item-body">
             <h3 class="item-title">Fractional accounting operations</h3>
             <p class="copy">Outsourced controller-level support for companies that don't need a full-time controller. Monthly reporting, close oversight, and the day-to-day work that keeps the back office running. You get a person who knows your books, not a ticket queue.</p>
           </div>
-          <div>
+        </div>
+
+        <div class="item-row">
+          <div class="item-num">02</div>
+          <div class="item-body">
             <h3 class="item-title">Custom automations and internal tools</h3>
             <p class="copy">Workflows, dashboards, and small applications, built one of two ways. If the Microsoft stack you already license can carry the job, it gets built there: Power Platform, Power BI, SharePoint, Excel. If it can't, it gets built as custom software, hosted and maintained the same way Steda is.</p>
           </div>
-          <div>
+        </div>
+
+        <div class="item-row">
+          <div class="item-num">03</div>
+          <div class="item-body">
             <h3 class="item-title">Monthly reviews</h3>
             <p class="copy">A recurring look at the books for owners who have a bookkeeper but no one checking the work. Reconciliations verified, unusual activity flagged, and a short written summary of what changed and what needs a decision.</p>
           </div>
-          <div>
+        </div>
+
+        <div class="item-row">
+          <div class="item-num">04</div>
+          <div class="item-body">
             <h3 class="item-title">Project consulting</h3>
             <p class="copy">Fixed-scope engagements with a defined end. Data cleanup, chart of accounts restructuring, reporting packages, reconciliation systems, month-end close automation, and AP/AR workflow. Scoped in writing before it starts.</p>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- HOW WE WORK -->
-  <section class="band band--ruled">
+  <section class="band">
     <div class="wrap">
-      <div class="band-body">
-        <h2 class="eyebrow">How we work</h2>
-        <div class="points">
-          <p class="copy"><strong>Fixed-scope proposals, not hourly.</strong> The scope, the deliverable, and the price are written down before work starts. If the scope changes, we write a new one.</p>
-          <p class="copy"><strong>Most projects land in two to four weeks.</strong> Longer engagements get split into pieces that each deliver something you can use on their own.</p>
-          <p class="copy"><strong>No software you don't need.</strong> Most companies are already paying for more capability than they use, so the first look is always at what you own. When that genuinely can't do the job, a purpose-built tool usually beats one more subscription you carry forever.</p>
-          <p class="copy"><strong>Handoff is hands-on.</strong> Whatever gets built comes with documentation and a walkthrough with the people who'll use it. No part of it should depend on me still being around.</p>
-          <p class="copy"><strong>Monthly engagements start at $850 per month.</strong> Projects are scoped and quoted individually, starting at $3,500. Nothing begins without a number you have already agreed to.</p>
-        </div>
+      <h2 class="eyebrow">How we work</h2>
+      <div class="points">
+        <p class="copy point"><strong>Fixed-scope proposals, not hourly.</strong> The scope, the deliverable, and the price are written down before work starts. If the scope changes, we write a new one.</p>
+        <p class="copy point"><strong>Most projects land in two to four weeks.</strong> Longer engagements get split into pieces that each deliver something you can use on their own.</p>
+        <p class="copy point"><strong>No software you don't need.</strong> Most companies are already paying for more capability than they use, so the first look is always at what you own. When that genuinely can't do the job, a purpose-built tool usually beats one more subscription you carry forever.</p>
+        <p class="copy point"><strong>Handoff is hands-on.</strong> Whatever gets built comes with documentation and a walkthrough with the people who'll use it. No part of it should depend on me still being around.</p>
+        <p class="copy point"><strong>Monthly engagements start at $850 per month.</strong> Projects are scoped and quoted individually, starting at $3,500. Nothing begins without a number you have already agreed to.</p>
       </div>
     </div>
   </section>
 
   <!-- STEDA -->
-  <section id="steda" class="steda band">
+  <section id="steda" class="band steda">
     <div class="wrap">
+      <h2 class="eyebrow">Our product</h2>
       <div class="inner">
-        <h2 class="eyebrow">Our product</h2>
-        <p class="product">Steda</p>
+        <img class="steda-logo" src="/steda/logo-reversed-outlined.svg" alt="Steda" width="300" height="60">
         <p class="copy">Steda is a cloud fixed asset register that works with QuickBooks Desktop Enterprise. It replaces the depreciation spreadsheet: locked periods, an append-only audit trail, and journal entries posted back into the company file.</p>
         <p class="copy">We built it, we sell it, and we support the accountants who use it every month. That's why the systems advice here is worth something. It comes from shipping and maintaining one.</p>
-        <p class="copy" style="margin-top: 26px;"><a href="https://stedahq.com" target="_blank" rel="noopener">stedahq.com &rarr;</a></p>
+        <p class="copy" style="margin-top: 28px;"><a href="https://stedahq.com" target="_blank" rel="noopener">stedahq.com &rarr;</a></p>
       </div>
     </div>
   </section>
@@ -305,25 +356,21 @@
   <!-- ABOUT -->
   <section class="band">
     <div class="wrap">
-      <div class="inner">
-        <h2 class="eyebrow">About</h2>
-        <p class="about">I'm Jimmy. I've spent my career closing books at small companies. Most of those closes ran on workbooks held together by memory, built by someone who had left the company years earlier. I started SMB Solved because recommending a system and then watching nobody implement it stopped being useful. SMB Solved does both halves: the accounting work itself, and the tools that make it hold up. I work out of Sugar Land, Texas.</p>
-      </div>
+      <h2 class="eyebrow">About</h2>
+      <p class="about">I'm Jimmy. I've spent my career closing books at small companies. Most of those closes ran on workbooks held together by memory, built by someone who had left the company years earlier. I started SMB Solved because recommending a system and then watching nobody implement it stopped being useful. SMB Solved does both halves: the accounting work itself, and the tools that make it hold up. I work out of Sugar Land, Texas.</p>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="band band--ruled">
+  <section id="contact" class="band surface">
     <div class="wrap">
-      <div class="band-body">
-        <h2 class="eyebrow">Contact</h2>
-        <div class="inner">
-          <p class="contact-line">Tell me what the month-end looks like now and where it breaks.</p>
-          <p class="contact-email"><a href="mailto:hello@smbsolved.com">hello@smbsolved.com</a></p>
-          <div class="cta-row">
-            <a href="https://outlook.office.com/bookwithme/user/a78568f6e272443a9e54d1a701434774@smbsolved.com/meetingtype/V-ihch_zw06fsbATYEBCpw2?anonymous&amp;ismsaljsauthenabled&amp;ep=mlink" class="btn" target="_blank" rel="noopener">Book a call</a>
-            <a href="https://www.linkedin.com/company/smbsolved" target="_blank" rel="noopener" style="font-size: 15.5px;">LinkedIn</a>
-          </div>
+      <h2 class="eyebrow">Contact</h2>
+      <div class="inner">
+        <p class="contact-line">Tell me what the month-end looks like now and where it breaks.</p>
+        <p class="contact-email"><a href="mailto:hello@smbsolved.com">hello@smbsolved.com</a></p>
+        <div class="cta-row">
+          <a href="https://outlook.office.com/bookwithme/user/a78568f6e272443a9e54d1a701434774@smbsolved.com/meetingtype/V-ihch_zw06fsbATYEBCpw2?anonymous&amp;ismsaljsauthenabled&amp;ep=mlink" class="btn" target="_blank" rel="noopener">Book a call</a>
+          <a href="https://www.linkedin.com/company/smbsolved" target="_blank" rel="noopener" style="font-size:15.5px;">LinkedIn</a>
         </div>
       </div>
     </div>
@@ -332,13 +379,21 @@
 </main>
 
 <footer class="site-foot">
-  <div class="foot-inner">
-    <div class="foot-links">
-      <span>&copy; 2026 SMB Solved</span>
+  <div class="foot-top">
+    <img src="/svg/logo-horizontal-reversed-outlined.svg" alt="SMB Solved" width="300" height="60">
+    <div class="foot-nav">
+      <a href="#services">Services</a>
+      <a href="#steda">Steda</a>
+      <a href="#contact">Contact</a>
       <a href="mailto:hello@smbsolved.com">hello@smbsolved.com</a>
       <a href="https://www.linkedin.com/company/smbsolved" target="_blank" rel="noopener">LinkedIn</a>
     </div>
-    <div>Steda is an SMB Solved product.</div>
+  </div>
+  <div class="foot-bar">
+    <div class="foot-bar-inner">
+      <span>&copy; 2026 SMB Solved &nbsp;&middot;&nbsp; Sugar Land, Texas</span>
+      <span>Steda is an SMB Solved product</span>
+    </div>
   </div>
 </footer>
 
